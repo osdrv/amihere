@@ -21,3 +21,18 @@
     - elsif @color == :green
       %p I am here!
 
+
+:javascript
+  (function(w, c) {
+      (w[c] = w[c] || []).push(function() {
+          try {
+              w.yaCounter1461889 = new Ya.Metrika({id:1461889,
+                      clickmap:true,
+                      trackLinks:true});
+          }
+          catch(e) { }
+      });
+  })(window, "yandex_metrika_callbacks");
+
+%script{ :src => "//mc.yandex.ru/metrika/watch.js", :type => "text/javascript", :defer => "defer" }
+  
