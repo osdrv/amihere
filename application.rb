@@ -11,14 +11,15 @@ end
 get "/" do
   owner = params["owner"] || "4pcbr"
   @ping = Ping.owned(owner)
-  p @ping
+  status = @ping ? @ping.status.to_i : nil
+  @color = :black
   if !@ping
     @color = :grey
   elsif Time.now.to_i - Time.parse(@ping.datetime).to_i > 30
     @color = :white
-  elsif @ping.status == 0
+  elsif status == 0
     @color = :red
-  else
+  elsif status == 1
     @color = :green
   end
   haml :index
