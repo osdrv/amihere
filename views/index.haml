@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    :css
+      body{ background-color: #313131; color: #FFF; margin: 0; padding: 30px; font: 18px Arial,Helvetica,"Nimbus Sans L",sans-serif; }
+  %body
+    %h1 Is 4pcbr is near about his workplace?
+    %p
+      I've got a movement sensor at my table. It pushes my movement status every 5 seconds.
+
+    %span{ :style => "font-size: 400px; color: #{@color};"} ✿
+
+    - if @color == :white
+      %p
+        No activity since
+        = @ping.datetime
+    - elsif @color == :grey
+      %p Don't actualy know...
+    - elsif @color == :red
+      %p It seems there is no activity
+    - elsif @color == :green
+      %p I am here!
+
