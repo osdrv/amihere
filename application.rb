@@ -31,5 +31,5 @@ get "/data.json" do
   owner = params["owner"] || "4pcbr"
   @ping = Ping.owned(owner) || Ping.new
   content_type :json
-  @ping.to_json
+  @ping.profile.json.to_json
 end
