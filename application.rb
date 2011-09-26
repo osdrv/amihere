@@ -1,3 +1,5 @@
+require "json"
+
 get "/ping" do
   halt 401 if !params["owner"]
   ping = Ping.find_or_create_by_owner(params["owner"])
@@ -23,4 +25,11 @@ get "/" do
     @color = :green
   end
   haml :index
+end
+
+get "/data.json" do
+  owner = params["owner"] || "4pcbr"
+  @ping = Ping.owned(owner) || Ping.new
+  content_type :json
+  @ping.to_json
 end
